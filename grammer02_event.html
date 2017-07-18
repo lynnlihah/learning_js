@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>grammer_event</title>
+  <script type="text/javascript">
+    var mystr="我是";
+    var mychar="JavaScript";
+    document.write(mychar+"<br>");
+    document.write(mystr + mychar + "忠实的粉丝！");
+    // alert 
+    function rec(){
+    	var mychar = "I love JavaScript";
+    	alert(mychar);
+    }
+    // confirm
+    function con(){
+    	var msg = confirm("love me?")
+    	if(msg == true){
+    		document.write("thank you :)");
+    	}else{ //取消
+    		document.write("滚出我的魔仙堡 :)");
+    	}
+    }
+    // prompt
+    function prop(){
+		var score; //score变量，用来存储用户输入的成绩值。
+		score =  prompt("请输入你的成绩") ;
+		if(score>=90)
+		{
+		   document.write("你很棒!");
+		}
+		else if(score>=75)
+	    {
+		   document.write("不错吆!");
+		}
+		else if(score>=60)
+	    {
+		   document.write("要加油!");
+	    }
+	    else
+		{
+	       document.write("要努力了!");
+		}
+  	}
+  	//打开新窗口 - 关闭窗口
+  	function wopen(){
+      	var mywin = window.open('http://www.google.com','_blank','width=600,height=400,top=200,left=0,menubar=no,toolbar=no, status=no,scrollbars=yes');
+      	alert("Ah Ha"); // 确定之后窗口会关闭
+      	mywin.close();
+  	} 
+    // 关闭本窗口
+  	function wclose(){
+  		window.close();
+  	}
+    // 综合练习 - 打开窗口
+    function openWindow(){
+        k_open=prompt("请输入你要打开的网址：","http://www.imooc.com/");
+        window.open(k_open,'_blank','width=400,height=500,menubar=no,toolbar=no');
+    }
+
+  </script>
+</head>
+<body>
+   <input name="button" type="button" onClick="rec()" value="点击我，弹出alert对话框" />
+   <input name="button" type="button" onClick="con()" value="点击我，弹出确认对话框" />
+   <!-- prompt -->
+   <input name="button" type="button" onClick="prop()" value="点击我，对成绩做评价!" /> 
+   <input name="button" type="button" onClick="wopen()" value="点击我，打开新窗口!" / >
+   <input name="button" type="button" onClick="wclose()" value="关闭本窗口!" / >
+   <input type="button" value="新窗口打开网站" onclick="openWindow()" /> 
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!-- 
+1. 元素节点：上图中<html>、<body>、<p>等都是元素节点，即标签。
+2. 文本节点:向用户展示的内容，如<li>...</li>中的JavaScript、DOM、CSS等文本。
+3. 属性节点:元素属性，如<a>标签的链接属性href="http://www.imooc.com"。 
+-->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>document</title>
+	<style>
+	    body{ font-size:16px;}
+	    .one{
+			border:1px solid #eee;
+			width:230px;
+			height:50px;
+			background:#ccc;
+			color:red;
+	    }
+		.two{
+			border:1px solid #ccc;
+			width:230px;
+			height:50px;
+			background:#9CF;
+			color:blue;
+		}
+	</style>
+</head>
+<body>
+<p id="con">JavaScript</p>
+<h2 id="con1">javascript</h2>>
+<script type="text/javascript">
+	// var mychar= document.getElementById("con").innerHTML; //JavaScript
+	var mychar= document.getElementById("con"); //[object HTMLParagraphElement]
+	document.write("结果:"+mychar); //输出获取的P标签。 
+
+	// innerHTML 属性用于获取或替换 HTML 元素的内容。
+	var mychar1=document.getElementById("con1") ;
+	document.write("原标题:"+mychar1.innerHTML+"<br>"); //输出原h2标签内容
+	mychar1.innerHTML = "Hello world!" //此时页面h2的内容已经修改了
+	document.write("修改后的标题:"+mychar1.innerHTML); //输出修改后h2标签内容
+
+	// 修改元素样式 
+	// Object.style.property=new style;
+	mychar.style.color="red";
+	mychar.style.fontSize="20";
+	mychar.style.backgroundColor ="#CCC";
+	mychar.style.width="300px";
+
+	// 隐藏显示 - Object.style.display = value
+	function hidetext(){  
+		var mychar = document.getElementById("con2");
+		mychar.style.display="none";
+	}  
+	function showtext(){  
+		var mychar = document.getElementById("con2");
+		mychar.style.display="block"; // 此元素将显示为块级元素（即显示）
+	}
+
+	// 控制类名（className 属性）
+	// object.className = classname
+	// 1.获取元素的class 属性
+	// 2. 为网页内的某个元素指定一个css样式来更改该元素的外观
+	function add(){
+    	var p1 = document.getElementById("p1");
+    	p1.className = "one";
+    }
+    function modify(){
+    	var p2 = document.getElementById("p2");
+    	p2.className = "two";
+    }
+</script>
+<h1>JavaScript</h1>  
+    <p id="con2">做为一个Web开发师来说，如果你想提供漂亮的网页、令用户满意的上网体验，JavaScript是必不可少的工具。</p> 
+    <form>
+       <input type="button" onclick="hidetext()" value="隐藏内容" /> 
+       <input type="button" onclick="showtext()" value="显示内容" /> 
+    </form>
+
+    <p id="p1" > JavaScript使网页显示动态效果并实现与用户交互功能。</p>
+    <input type="button" value="添加样式" onclick="add()"/>
+	<p id="p2" class="one">JavaScript使网页显示动态效果并实现与用户交互功能。</p>
+    <input type="button" value="更改外观" onclick="modify()"/>
+</body>
+
+</html>

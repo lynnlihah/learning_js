@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS代码基础01</title>
+<!-- 可以放在head也可以放在body，执行顺序由上到下 -->
+<script type="text/javascript"> 
+  document.write("I love");
+</script>
+</head>
+<body>
+<script type="text/javascript">
+ 	// 变量 - 区分大小写，可以不声明，直接使用
+ 	var mychar = 5;
+ 	// alert("mya的值是:"+ mychar);
+ 	// 字符串连接可以直接用 + 
+ 	document.write("javascript" + "<br>");
+
+ 	// 数组
+ 	var myarr=new Array(); //定义数组
+ 	myarr[0]=80; 
+ 	myarr[1]=60;
+ 	myarr[2]=99;
+ 	document.write("第一个人的成绩是:"+myarr[0] + "<br>");
+ 	document.write("第二个人的成绩是:"+myarr[1] + "<br>");	
+ 	document.write("第三个人的成绩是:"+myarr[2] + "<br>");
+  	document.write("数组的第四个值："+myarr[4] + "<br>");
+
+ 	var score =80; //score变量存储成绩，初值为80
+	if( score > 60)
+	{
+     document.write("很棒，成绩及格了。");
+	}
+    else
+	{
+	 document.write("加油，成绩不及格。");
+	}
+	// 函数
+	function context(){
+		alert("函数调用");
+	}
+</script>
+ 	<form>
+      <input type="button"  value="函数调用" onclick=" context()" />  
+    </form>
+<script src="script.js">
+	// 引用外部文件
+	/*多行注释*/
+</script> 
+
+</body>
+</html>
