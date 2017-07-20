@@ -24,24 +24,20 @@
     }
     // prompt
     function prop(){
-		var score; //score变量，用来存储用户输入的成绩值。
-		score =  prompt("请输入你的成绩") ;
-		if(score>=90)
-		{
-		   document.write("你很棒!");
-		}
-		else if(score>=75)
-	    {
-		   document.write("不错吆!");
-		}
-		else if(score>=60)
-	    {
-		   document.write("要加油!");
-	    }
-	    else
-		{
-	       document.write("要努力了!");
-		}
+  		var score; //score变量，用来存储用户输入的成绩值。
+  		score =  prompt("请输入你的成绩") ;
+  		if(score>=90){
+  		   document.write("你很棒!");
+  		}
+  		else if(score>=75){
+  		   document.write("不错吆!");
+  		}
+  		else if(score>=60){
+  		   document.write("要加油!");
+  	  }
+  	  else{
+  	       document.write("要努力了!");
+  		}
   	}
   	//打开新窗口 - 关闭窗口
   	function wopen(){
@@ -58,16 +54,47 @@
         k_open=prompt("请输入你要打开的网址：","http://www.imooc.com/");
         window.open(k_open,'_blank','width=400,height=500,menubar=no,toolbar=no');
     }
+    // 鼠标经过 - onmouseover 
+    // 场景： 鼠标经过按钮，弹出消息对话框
+    function msgover(){
+        confirm("请输入密码后，再单击确定!"); 
+    }
+    // 鼠标移开 - onmouseout
+    // 场景： 鼠标移开，弹出消息对话框
+    function msgout(){
+       alert("不要移开!"); 
+    }
+    // 光标聚焦： onfocus
+    // 失焦事件： onblur  需要光标离开文本框触发
+    // 选中事件： onselect 选中文本框中文字触发
+    // 文本框内容改变事件： onchange
+    // 加载事件： onload 
+        // 事件会在页面加载完成后，立即发生，同时执行被调用的程序。
+        // 注意：1. 加载页面时，触发onload事件，事件写在<body>标签内。
+        //       2. 此节的加载页面，可理解为打开一个新页面时。
+    function msgload() {
+      alert("加载中，请稍等...");
+    }
+    // 卸载时间：onunload - 不会用
+        // 当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件，同时执行被调用的程序。
+        // 注意：不同浏览器对onunload事件支持不同。
 
   </script>
 </head>
-<body>
-   <input name="button" type="button" onClick="rec()" value="点击我，弹出alert对话框" />
-   <input name="button" type="button" onClick="con()" value="点击我，弹出确认对话框" />
-   <!-- prompt -->
-   <input name="button" type="button" onClick="prop()" value="点击我，对成绩做评价!" /> 
-   <input name="button" type="button" onClick="wopen()" value="点击我，打开新窗口!" / >
-   <input name="button" type="button" onClick="wclose()" value="关闭本窗口!" / >
-   <input type="button" value="新窗口打开网站" onclick="openWindow()" /> 
+<body onload="msgload()">
+    <input name="button" type="button" onClick="rec()" value="点击我，弹出alert对话框" />
+    <input name="button" type="button" onClick="con()" value="点击我，弹出确认对话框" />
+    <!-- prompt -->
+    <input name="button" type="button" onClick="prop()" value="点击我，对成绩做评价!" /> 
+    <input name="button" type="button" onClick="wopen()" value="点击我，打开新窗口!" / >
+    <input name="button" type="button" onClick="wclose()" value="关闭本窗口!" / >
+    <input type="button" value="新窗口打开网站" onclick="openWindow()" /> 
+
+    <br>
+    <form>
+    密码:<input name="password" type="password" >
+         <input name="确定" type="button" value="鼠标经过触发事件" onmouseover="msgover()"/>
+         <a href="http://www.google.com" onmouseout="msgout()">鼠标移开触发事件</a>
+    </form>
 </body>
 </html>

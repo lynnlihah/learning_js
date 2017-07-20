@@ -17,7 +17,7 @@
  	document.write("javascript" + "<br>");
 
  	// 数组
- 	var myarr=new Array(); //定义数组
+ 	var myarr=new Array(); //定义数组 var myarr = new Array(3); var myarr=[66,80,90]; 都可以
  	myarr[0]=80; 
  	myarr[1]=60;
  	myarr[2]=99;
@@ -25,20 +25,99 @@
  	document.write("第二个人的成绩是:"+myarr[1] + "<br>");	
  	document.write("第三个人的成绩是:"+myarr[2] + "<br>");
   	document.write("数组的第四个值："+myarr[4] + "<br>");
-
+	document.write("数组长度：", myarr.length + "<br>");
+	
+	var Myarr = [[0 , 1 , 2 ],[1 , 2 , 3]]
+	document.write("二维数组：", Myarr[0][1] + "<br>");
+	// 条件 - if  // else if
  	var score =80; //score变量存储成绩，初值为80
-	if( score > 60)
-	{
-     document.write("很棒，成绩及格了。");
+	if(score > 60)	{
+    	document.write("很棒，成绩及格了。" + "<br>");
 	}
-    else
-	{
-	 document.write("加油，成绩不及格。");
+    else{
+	 	document.write("加油，成绩不及格。" + "<br>");
 	}
-	// 函数
+	// 条件 - switch
+	var myweek =3;//myweek表示星期几变量
+	switch(myweek){
+		case 1:
+		case 2:
+			document.write("学习理念知识" + "<br>");
+			break;
+		case 3:
+		case 4:
+			document.write("到企业实践" + "<br>");
+			break;
+		case 5:
+			document.write("总结经验" + "<br>");
+			break;
+		default:
+			document.write("周六、日休息和娱乐" + "<br>");
+	}
+	// 循环 - for 
+	var mymoney,sum=0;//mymoney变量存放不同面值，sum总计
+	for(mymoney=1; mymoney<=10; mymoney++)	{ 
+		sum= sum + mymoney;
+	}
+	document.write("sum合计:" + sum + "<br>");
+	// 循环 -while / do while
+	var mynum =1; 
+    while(mynum<=5){	
+		document.write("数字:"+mynum);
+    	mynum=mynum+1;	
+   	}
+   	// break, continue
+   	document.write("<br>");
+
+	// 函数 - 带参数、返回值；调用
 	function context(){
 		alert("函数调用");
 	}
+	function app2(x, y){
+	 	var sum,x,y;
+    	sum = x * y;
+    	return sum
+  	}
+  	// 时间对象 
+  	// getDay() 返回星期，返回的是0-6的数字，0 表示星期天。
+  	// get/setTime() 返回/设置时间，单位毫秒数，计算从 1970 年 1 月 1 日零时到日期对象所指的日期的毫秒数。
+  	var mydate=new Date(); 
+	var myyear=mydate.getFullYear();
+	document.write("年份:"+ myyear + "<br>");
+	mydate.setTime(mydate.getTime() + 60 * 60 * 1000);
+  	document.write("推迟一小时时间：" + mydate + "<br>");
+
+  	// 字符串 - length 长度
+  	var message="I love JavaScript!";
+    var mylower=message.toLowerCase();
+    document.write("字符串小写为："+ mylower + "<br>");
+    var myupper=message.toUpperCase();
+    document.write("字符串大写为："+ myupper + "<br>");
+    // 根据位置返回字符 - [0,size-1]
+    document.write(myupper.charAt(myupper.length-1) + "<br>" );
+    //返回指定的字符串首次出现的位置
+    var mystr="Hello World!"
+  	document.write(mystr.indexOf("o")+"<br>");
+  	//分割字符串
+  	mystr="86-010-85468578";
+	document.write(mystr.split('-') + "<br />"); //86,010,85468578
+	document.write(mystr.split('')  + "<br />"); //所有字符都分割 8,6,-,0,1,0,-,8,5,4,6,8,5,7,8
+	document.write(mystr.split('',3) + "<br>");  //分割三次，输出 8,6,-
+	//提取字符串
+	mystr="Hello World!"
+	document.write(mystr.substring(6 )+ "<br />");
+	document.write(mystr.substring(0,5) + "<br />");
+	//stringObject.substr(startPos,length) 根据起始位置+长度 提取子串
+	//Math - 数学计算
+	var mypi = Math.PI; 
+  	var myabs = Math.abs(-15);
+  	document.write(mypi + "<br>");
+  	document.write(myabs + "<br>");
+  	// 向上/向下取整 
+  	document.write(Math.ceil(0.8) + "<br />") // 1
+  	document.write(Math.floor(0.8) + "<br>") // 0 
+  	document.write(Math.round(1.6) + "<br>"); //2  最接近整数
+  	document.write(Math.random() + "<br>"); // 生成 0~1 随机数
 </script>
  	<form>
       <input type="button"  value="函数调用" onclick=" context()" />  
