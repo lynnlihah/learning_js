@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>浏览器对象</title>
+<!-- BOM:Browser Object Model -->
+<script type="text/javascript">
+
+	function rec(){
+		var mymessage=confirm("test");
+		if(mymessage==true){
+			window.open('http://www.google.com','_blank','height=600,width=400');
+		}
+	}
+	//计时器
+	// 一次性计时器：仅在指定的延迟时间之后触发一次。
+	// 间隔性触发计时器：每隔一定的时间间隔就触发一次。
+	// setTimeout() 指定的延迟时间之后来执行代码
+	// clearTimeout() 取消setTimeout()设置
+	// setInterval() 每隔指定的时间执行代码
+	// clearInterval() 取消setInterval()设置
+
+	// setInterval(代码,交互时间);
+	// 1. 代码：要调用的函数或要执行的代码串。
+	// 2. 交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）。
+	// setInterval("clock()",1000)
+	// setInterval(clock,1000)
+	var int_id = setInterval(clock, 100)
+	function clock(){
+	    var time=new Date();
+	    document.getElementById("clock").value = time;
+	}
+	//clearInterval(id_of_setInterval)
+	// id_of_setInterval：由 setInterval() 返回的 ID 值。
+
+	// setTimeout(代码,延迟时间);
+	// setTimeout()计时器，在载入后延迟指定时间后,去执行一次表达式,仅执行一次。
+	// clearTimeout(id_of_setTimeout)
+	var num = 0;
+	var i;
+	function startCount(){
+		document.getElementById('count').value = num;
+		num = num+1;
+		i=setTimeout("startCount()",1000);
+	}
+	function stopCount(){
+		clearTimeout(i);
+	}
+
+	// history 对象
+	// history对象记录了用户曾经浏览过的页面(URL)，并可以实现浏览器前进与后退相似导航的功能。
+	// window.history.[属性|方法], window可以省略
+	// length, back(), foward(), go()
+	var HL = window.history.length   ;
+  	document.write(HL + "<br>");
+  	function GoBack() {
+        // window.history.back();
+        window.history.go(-1);
+    }
+    function GoForward() {
+        window.history.forward();
+        // window.history.go(1);
+    }
+
+    // location 对象
+    // 用于获取或设置窗体的URL，并且可以用于解析URL。
+    document.write("href: " + window.location.href + "<br>") // 完整URL
+    document.write("host: " + window.location.host + "<br>") // 主机名加端口号
+    document.write("hostname: " + window.location.hostname + "<br>") // 主机名
+    document.write("port: " + window.location.port + "<br>") // 端口号
+    document.write("hash: " + window.location.hash + "<br>") // 从#开始的URL（锚）
+    document.write("pathname: " + window.location.pathname + "<br>") // URL路径
+    document.write("protocol: " + window.location.protocol + "<br>") // 协议
+    document.write("search: " + window.location.search + "<br>") // ?开始的UR查询部分
+    // location 对象方法 ： assign(), reload(), replace()
+
+    // Navigator对象 含有浏览器相关信息
+    
+</script>
+</head>
+<body>
+<form>
+	<input type="button" value="点击我，打开新窗口" onclick="rec()" />
+	<br>
+ 	<input type="text" id="clock" size="50"  />
+ 	<input type="button" value="停止计时" onclick="clearInterval(int_id)" />
+ 	<br>
+ 	<label>计数器：</label>
+ 	<input type="text" id="count" />
+	<input type="button" value="Start" onclick="setTimeout('startCount()',1000)" />
+    <input type="button" value="Stop" onclick="stopCount()"/>
+
+    <br />
+    <br />
+    点击下面的锚点链接，添加历史列表项:
+    
+    <br />
+    <a href="#target1">第一个锚点</a>
+    <a name="target1"></a>
+    <br />
+    <a href="#target2">第二个锚点</a>
+    <a name="target2"></a>
+    <br />
+    <a href="#target3">第三个锚点</a>
+    <a name="target3"></a>
+    <br />
+    使用下面按钮，实现返回前一个/下一个页面:
+    <form>
+       <input type="button"  value="返回前一个页面" onclick="GoBack()" />    
+       <input type="button"  value="返回下一个页面" onclick="GoForward()" />        
+    </form>
+</form>
+</body>
+</html>

@@ -118,6 +118,29 @@
   	document.write(Math.floor(0.8) + "<br>") // 0 
   	document.write(Math.round(1.6) + "<br>"); //2  最接近整数
   	document.write(Math.random() + "<br>"); // 生成 0~1 随机数
+
+  	// 数组常用方法
+	// concat: 连接两个/多个数组，返回一个新数组，不改变原来的数组。arrayObject.concat(array1,array2,...,arrayN)  	
+	var myarr1= new Array("010");
+    var myarr2= new Array("-","84697581");
+    document.write(myarr1.concat(myarr2) + "<br>");
+    // join: 指定分隔符连接数组元素 arrayObject.join(分隔符)
+    var myarr3= myarr1.concat(myarr2);
+    document.write(myarr3.join("-") + '<br>'); // 010---84697581
+    // reverse: 逆序
+    document.write(myarr2.reverse() + '<br>');
+    // slice: 从数组中取元素， -1 是最后一个元素。 arrayObject.slice(start,end), 返回数据不包括end位置元素
+    myarr1= ["我","爱","你"];
+   	document.write(myarr1.slice(1,3) + '<br>'); // output: 爱，你
+   	// sort: 排序 arrayObject.sort(方法函数)
+   	// 1.如果不指定<方法函数>，则按unicode码顺序排列。
+	// 2.如果指定<方法函数>，则按<方法函数>所指定的排序方法排序。
+	  function sortNum(a,b) {
+    return b - a; // 升序改成 a - b 
+   }
+	myarr = ["80","16","50","6","100","1"];
+	document.write(myarr.sort(sortNum) + '<br>');
+
 </script>
  	<form>
       <input type="button"  value="函数调用" onclick=" context()" />  
