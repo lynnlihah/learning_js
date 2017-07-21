@@ -29,7 +29,7 @@
 </head>
 <body>
 <p id="con">JavaScript</p>
-<h2 id="con1">javascript</h2>>
+<h2 id="con1">javascript</h2>
 <script type="text/javascript">
 	// var mychar= document.getElementById("con").innerHTML; //JavaScript
 	var mychar= document.getElementById("con"); //[object HTMLParagraphElement]
@@ -53,6 +53,7 @@
 		var mychar = document.getElementById("con2");
 		mychar.style.display="none";
 	}  
+	
 	function showtext(){  
 		var mychar = document.getElementById("con2");
 		mychar.style.display="block"; // 此元素将显示为块级元素（即显示）
@@ -66,10 +67,133 @@
     	var p1 = document.getElementById("p1");
     	p1.className = "one";
     }
+	
     function modify(){
     	var p2 = document.getElementById("p2");
     	p2.className = "two";
     }
+	
+	// getElementsByName()
+	// 因为文档中的 name 属性可能不唯一，所有 getElementsByName() 方法返回的是元素的数组，而不是一个元素。
+	function getnum(){
+	  var mynode= document.getElementsByName("myt");  
+	  alert(mynode.length);
+	}
+	
+	// getElementsByTagName() - 1.Tagname是标签的名称，如p、a、img等标签名。2.返回数组
+	// 返回带有指定标签名的节点对象的集合。返回元素的顺序是它们在文档中的顺序。
+	function getValue(){
+    	myH = document.getElementById("myHead")   
+        alert(myH.innerHTML)
+    }
+	
+    function getElements(){
+        myS = document.getElementsByName("sex")   
+        alert(myS.length);
+    }
+	
+    function getTagElements(){
+        myI = document.getElementsByTagName("input");
+        alert(myI.length);
+    }
+	
+    function checkall(){
+        var hobby = document.getElementsByTagName("input");
+        for(var i=0;i<hobby.length;i++){
+			if (hobby[i].type=='checkbox'){
+				hobby[i].checked=true;
+			}
+        }
+    }
+	
+    function clearall(){
+        var hobby = document.getElementsByName("hobby");
+        for(var i=0;i<hobby.length;i++){
+            hobby[i].checked=false;
+        }
+    }
+  
+    function checkone(){
+        clearall();
+        var hobby = document.getElementsByName("hobby");
+        var j=document.getElementById("wb").value;
+        for(var i=0;i<j.length;i++){
+            if(j.charAt(i)>6 || j.charAt(i)<1){
+                alert("越界,请重新输入！");
+                document.getElementById("wb").value="";
+            }
+        }
+        for(var n=0;n<j.length;n++){
+		  hobby[(j.charAt(n))-1].checked=true; 
+        }  
+    }
+	
+	// elementNode.getAttribute(name)
+	// 通过元素节点的属性名称获取属性的值。
+	function getlititles(){
+        var con=document.getElementsByTagName("li");
+        for (var i=0; i< con.length;i++){
+          var text = con[i].getAttribute("title");
+          if(text!=null)
+          {
+            document.write(text+"<br>");
+          }
+        } 
+	}
+	// elementNode.setAttribute(name,value)
+	// setAttribute() 方法增加一个指定名称和值的新属性，或者把一个现有的属性设定为指定的值。
+	// 注意：
+	// 1.把指定的属性设置为指定的值。如果不存在具有指定名称的属性，该方法将创建一个新属性。
+	// 2.类似于getAttribute()方法，setAttribute()方法只能通过元素节点对象调用的函数。
+	function setlititles(){
+		var Lists=document.getElementsByTagName("li");
+		  for (var i=0; i<Lists.length;i++){
+		    var text = Lists[i].getAttribute("title")
+		    document.write(text);
+		    if(text==""){
+		        Lists[i].setAttribute("title","WEB前端技术");
+		        document.write(Lists[i].getAttribute("title"));
+		    }
+			document.write("<br>");
+		  }
+	}
+	
+	// 在文档对象模型 (DOM) 中，每个节点都是一个对象。DOM 节点有三个重要的属性 :
+	// 1. nodeName : 节点的名称 - 只读
+	// 2. nodeValue : 节点的值
+	// 3. nodeType : 节点的类型 - 只读
+	// 常用类型：
+	// 元素类型    节点类型
+  	 // 元素          1
+  	 // 属性          2
+  	 // 文本          3
+  	 // 注释          8
+	 // 文档          9
+	function getnodeattributes(){
+	    var lists = document.getElementsByTagName("li");
+	    for(var i=0;i<lists.length;i++){
+	       document.write("第"+i+"个节点的名称是"+lists[i].nodeName+"<br  />");
+	       document.write("第"+i+"个节点的值是"+lists[i].nodeValue+"<br  />");
+	       document.write("第"+i+"个节点的类型是"+lists[i].nodeType+"<br  />");
+	       document.write("<br  />");
+	    }
+	}
+	
+	// 访问选定元素节点下的所有子节点的列表，返回的值可以看作是一个数组，他具有length属性
+	// elementNode.childNodes
+	// 1. IE全系列、firefox、chrome、opera、safari兼容问题
+	// 2. 节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点，所以IE是3，其它浏览器是7，
+	// 没得到预期效果
+    function getchildnodes(){
+	    var x=document.getElementsByTagName("div")[0].childNodes;
+	    for(var i=0;i<x.length;i++)
+	    {
+	       document.write("第"+(i+1)+"个节点的值是："+x[i].nodeValue+"<br  />"); 
+	       document.write("第"+(i+1)+"个节点的名称是："+x[i].nodeName+"<br  />"); 
+	       document.write("第"+(i+1)+"个节点的属性是："+x[i].nodeType+"<br  />");
+	       document.write("<br  />");
+	    }
+    } 
 </script>
 <h1>JavaScript</h1>  
     <p id="con2">做为一个Web开发师来说，如果你想提供漂亮的网页、令用户满意的上网体验，JavaScript是必不可少的工具。</p> 
@@ -82,6 +206,120 @@
     <input type="button" value="添加样式" onclick="add()"/>
 	<p id="p2" class="one">JavaScript使网页显示动态效果并实现与用户交互功能。</p>
     <input type="button" value="更改外观" onclick="modify()"/>
+	<br>
+	getElementsByName:
+	<input name="myt" type="text" value="1">
+	<input name="myt" type="text" value="2">
+	<input name="myt" type="text" value="3">
+	<input name="myt" type="text" value="4">
+	<input name="myt" type="text" value="5">
+	<input name="myt" type="text" value="6">
+	<input type="button" onclick="getnum()" value="看看有几项？" />
+	
+    <form name="Input">
+        <table align="center" width="500px" height="50%" border="1">
+            <tr>
+                <td align="center" width="100px">
+                    学号:
+                </td>
+                <td align="center" width="300px">
+                    <input type="text" id=userid name="user" onblur="validate();">
+                    <div id=usermsg></div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width="100px">
+                    姓名:
+                </td>
+                    <td align="center">
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width="%45">
+                    性别:
+                </td>
+                <td align="center">
+                    <input type="radio" name="sex" value="男">
+                    男
+                    <input type="radio" name="sex" value="女">
+                    女
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width="30%">
+                    年龄:
+                </td>
+                <td align="center" width="300px">
+                    <input type="text" name="age">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width="100px">
+                    地址:
+                </td>
+                <td align="center" width="300px">
+                    <input type="text" name="addr">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    <h1 id="myHead" onclick="getValue()">
+        看看三种获取节点的方法?
+    </h1>
+    <p>
+        点击标题弹出它的值。
+    </p>
+    <input type="button" onclick="getElements()"
+        value="看看name为sex的节点有几个?" />
+    <Br>
+    <input type="button" onclick="getTagElements()"
+        value="看看标签名为input的节点有几个?" />
+		
+    <form>
+		一个练习:<br>
+        请选择你爱好:<br>
+            <input type="checkbox" name="hobby" id="hobby1">  音乐
+            <input type="checkbox" name="hobby" id="hobby2">  登山
+            <input type="checkbox" name="hobby" id="hobby3">  游泳
+            <input type="checkbox" name="hobby" id="hobby4">  阅读
+            <input type="checkbox" name="hobby" id="hobby5">  打球
+            <input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
+            <input type="button" value = "全选" onclick = "checkall();">
+            <input type="button" value = "全不选" onclick = "clearall();">
+            <p>请输入您要选择爱好的序号，序号为1-6:</p>
+            <input id="wb" name="wb" type="text" >
+            <input name="ok" type="button" value="确定" onclick = "checkone();">
+   </form> 
+   
+   <p id="intro">课程列表(elementNode.getAttribute(name)练习)</p>  
+       <ul>  
+		   <li title="JS">JavaScript</li>  
+		       <li title="JQ">JQuery</li>  
+		       <li title="">HTML/CSS</li>  
+		       <li title="JAVA">JAVA</li>  
+		       <li title="">PHP</li>
+       </ul>  
+   <p>以下为获取的不为空的li标签title值:</p>  
+   <script type="text/javascript">
+      getlititles()
+   </script>
+   <p>以下为li列表title的值,当title为空时，新设置值为"WEB前端技术":</p>
+   <script type="text/javascript">
+      setlititles()
+   </script>
+	   
+  <div>
+    javascript  
+    <p>javascript</p>
+    <div>jQuery</div>
+    <h5>PHP</h5>
+  </div>
+   <script type="text/javascript">
+	  getchildnodes()
+   </script>
+		
 </body>
 
 </html>

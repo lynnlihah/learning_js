@@ -74,8 +74,31 @@
     document.write("search: " + window.location.search + "<br>") // ?开始的UR查询部分
     // location 对象方法 ： assign(), reload(), replace()
 
-    // Navigator对象 含有浏览器相关信息
-    
+    // Navigator 对象 含有浏览器相关信息
+    var browser = navigator.appName;
+    var b_version = navigator.appVersion;
+    document.write(browser + '<br>' + b_version);
+	// userAgent 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)
+	function validB(){ 
+	  var u_agent = navigator.userAgent; 
+	  var B_name="Failed to identify the browser"; 
+	  if(u_agent.indexOf("Firefox")>-1){ 
+	      B_name="Firefox"; 
+	  }else if(u_agent.indexOf("Chrome")>-1){ 
+	      B_name="Chrome"; 
+	  }else if(u_agent.indexOf("MSIE")>-1&&u_agent.indexOf("Trident")>-1){ 
+	      B_name="IE(8-10)";  
+	  }
+	    document.write("B_name:"+B_name+"<br>");
+	    document.write("u_agent:"+u_agent+"<br>"); 
+	} 
+	// validB();
+	
+	// screen 屏幕特性
+	document.write( "屏幕宽度：" + screen.width + "px<br>");
+	document.write( "屏幕高度：" + screen.height + "px<br>"); 
+	document.write("可用宽度："  + screen.availWidth + "px<br>"); // 去掉屏幕特性，如任务栏
+	document.write("可用高度："  + screen.availHeight + "px<br>"); 
 </script>
 </head>
 <body>
